@@ -1,19 +1,37 @@
 <idea-plugin>
-    <id>com.github.dobrakmato.glslintellij</id>
-    <name>glsl-intellij</name>
+    <id>com.github.dobrakmato.glsl</id>
+    <name>glsl</name>
     <vendor>dobrakmato</vendor>
 
     <!-- Product and plugin compatibility requirements -->
     <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+
+    <actions>
+        <action id="CREATE_NEW_GLSL_FILE" class="com.github.dobrakmato.glsl.actions.CreateNewGLSLFile"
+                description="Create new GLSL file">
+            <add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFromTemplate"/>
+        </action>
+    </actions>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.dobrakmato.glslintellij.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.dobrakmato.glslintellij.services.MyProjectService"/>
+        <applicationService serviceImplementation="com.github.dobrakmato.glsl.services.MyApplicationService"/>
+        <projectService serviceImplementation="com.github.dobrakmato.glsl.services.MyProjectService"/>
+
+        <fileType id="GLSL"
+                  name="GLSL"
+                  language="GLSL"
+                  implementationClass="com.github.dobrakmato.glsl.lang.GlslFileType"
+                  extensions="glsl;vert;frag"
+                  fieldName="INSTANCE"/>
+
+        <internalFileTemplate name="GLSL File"/>
+        <lang.commenter language="GLSL" implementationClass="com.github.dobrakmato.glsl.GlslCommenter"/>
     </extensions>
 
     <applicationListeners>
-        <listener class="com.github.dobrakmato.glslintellij.listeners.MyProjectManagerListener"
+        <listener class="com.github.dobrakmato.glsl.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
 </idea-plugin>

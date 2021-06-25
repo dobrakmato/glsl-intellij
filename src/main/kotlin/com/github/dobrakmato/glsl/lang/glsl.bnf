@@ -1,0 +1,23 @@
+{
+  parserClass="com.github.dobrakmato.glsl.lang.parser.GlslParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="Glsl"
+  psiImplClassSuffix="Impl"
+  psiPackage="com.github.dobrakmato.glsl.lang.psi"
+  psiImplPackage="com.github.dobrakmato.glsl.lang.psi.impl"
+
+  elementTypeHolderClass="com.github.dobrakmato.glsl.lang.psi.SimpleTypes"
+  elementTypeClass="com.github.dobrakmato.glsl.lang.psi.GlslElementType"
+  tokenTypeClass="com.github.dobrakmato.glsl.lang.psi.GlslTokenType"
+}
+
+glslFile ::= preprocessorMacro | functionDeclaration
+
+preprocessorMacro ::= preprocessorVersion
+preprocessorVersion ::= <#version> NUMBER_LITERAL
+
+type ::= int | void
+
+functionDeclaration ::= type NAME <()>

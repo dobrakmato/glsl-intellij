@@ -1,6 +1,6 @@
-package com.github.dobrakmato.glslintellij.listeners
+package com.github.dobrakmato.glsl.listeners
 
-import com.github.dobrakmato.glslintellij.services.MyProjectService
+import com.github.dobrakmato.glsl.services.MyProjectService
 import com.intellij.openapi.components.service
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.ProjectManagerListener

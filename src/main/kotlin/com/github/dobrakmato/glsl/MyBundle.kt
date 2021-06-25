@@ -1,4 +1,4 @@
-package com.github.dobrakmato.glslintellij
+package com.github.dobrakmato.glsl
 
 import com.intellij.AbstractBundle
 import org.jetbrains.annotations.NonNls
